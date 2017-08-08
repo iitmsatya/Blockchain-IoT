@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Blockchain & IoT</title>
+        
+    <script>
+        
+        window.onload = function() {       
+
+        };
+
+    </script>
+
+</head>
+
+
+    <div class="navbar-header">
+      <a class="navbar-brand" >DISTRIBUTED LEDGER</a>
+    </div>
+
+
+<body class="grey darken-4 white-text">
+    <div class="flash">
+    </div>
+    <header>
+
+        <br/>
+
+    </header>
+    
+    <main class="grey darken-4">
+    
+    <TABLE class="matrix" id="table">
+      <TBODY>
+        <TR>
+          <TH width="217" style="background: #2881e6;" scope="col" text-color:"white">Date & Time</TH>
+          <TH width="50"  style="background: #2881e6;" scope="col" text-color:"white">Block Number</TH>
+          <TH width="217" style="background: #2881e6;" scope="col" white"="">Mined By</TH>
+          <TH width="158" style="background: #2881e6;" scope="col" white"="">Device Name</TH>
+          <TH width="157" style="background: #2881e6;" scope="col" white"="">IoT Name</TH>
+          <TH width="157" style="background: #2881e6;" scope="col" white"="">Comment</TH>
+        </TR>
+      <!-- <TR id="transactiontable" ng-repeat="transaction in totalTransaction" class="matrix_row_light">
+        <TD id="ledgerTimestampValue"></TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-2"></LABEL>{{transaction.ledgerTimestamp}}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-3"></LABEL>{{transaction.ledgerBlockNo}} </TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-1"></LABEL>{{transaction.ledgerMiner}}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-1"></LABEL>{{macIDs(transaction.deviceName) }}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-2"></LABEL>{{  }}</TD> -->
+
+        <TR id="transactionRow" class="matrix_row_light">
+          <TD id="ledgerTimestampValue"></TD>
+        </TR>
+
+      </TBODY>
+    </TABLE>
+
+
+    </main>
+    <TR></TR>
+    <input align="center" type="button" name="Submit" value="Submit" class="submit_button" onclick="initiateClaim()">
+
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
+    <script src="lib/web3/dist/web3.js"></script>
+    <script src="init.js"></script>
+    <script src="gest.min.js"></script>
+
+    
+    <script type="text/javascript">
+    //create message container
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'gest-message';
+    document.body.appendChild(messageContainer);
+
+    var styles = {
+    positioning: 'margin: 22% auto; min-width: 100px; max-width: 400px; width: 80%; padding: 15px;',
+    copy: 'font: normal 35px/1.1 \"Helvetica Neue\", Helvetica, Arial, sans-serif; color: #fff; font-size: 45px; text-align: center;',
+    general: 'display: block; background-color: #000; z-index: 100; border-radius: 10px;'
+    },
+    messageContainerStyle = styles.positioning + styles.copy + styles.general;
+
+    gest.options.subscribeWithCallback(function(gesture) {
+	    var message = '';
+	    if (gesture.direction) {
+	    message = gesture.direction;
+	    } else {
+	    message = gesture.error.message;
+	    } 
+	console.log(message);
+	    if(gesture.up){
+	console.log("MOVED UP");
+	    messageContainer.innerHTML = '<p style=\"margin:0\">' + message + '</p>';
+	    messageContainer.setAttribute('style', 'IOT device: Adding entry');
+		// Add the trigger function here
+		initiateClaim();
+	    window.setTimeout(function() {
+	    messageContainer.setAttribute('style', 'display: none;');
+	    }, 3000);
+
+ 		}
+    });
+	
+	    
+
+    gest.start();
+    </script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+  <title>Blockchain IoT Network</title>
+
+  <style type="text/css">
+    #mynetwork {
+      width: 640px;
+      height: 650px;
+      border: 10px solid lightgray;
+    }
+  </style>
+	  <div id= "a">  </div>
+
+  <script type="text/javascript" src="vis.js"></script>
+  <link href="vis-network.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/materialize.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript">
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    var DIR = './images/';
+    var EDGE_LENGTH_MAIN = 300;
+    var EDGE_LENGTH_SUB = 50;
+
+    // Called when the Visualization API is loaded.
+    function draw() {
+      // Create a data table with nodes.
+      nodes = [];
+
+      // Create a data table with links.
+      edges = [];
+	  
+	  
+      nodes.push({id: 1, label: 'IoT Node', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      nodes.push({id: 2, label: 'Surveyor', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      nodes.push({id: 3, label: 'Insurer', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      nodes.push({id: 4, label: 'Bank', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      nodes.push({id: 5, label: 'Regulator', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+      nodes.push({id: 6, label: 'IoT', image: DIR + 'Hardware-My-Phone-Picture-icon.png', shape: 'image'});
+         
+      edges.push({id:101, from: 1, to: 2, length: EDGE_LENGTH_MAIN});
+      edges.push({id:102, from: 2, to: 3, length: EDGE_LENGTH_MAIN});
+      edges.push({id:103, from: 3, to: 4, length: EDGE_LENGTH_MAIN});
+      edges.push({id:104, from: 4, to: 5, length: EDGE_LENGTH_MAIN});
+      edges.push({id:105, from: 5, to: 1, length: EDGE_LENGTH_MAIN});
+      edges.push({id:106, from: 1, to: 3, length: EDGE_LENGTH_MAIN});
+      edges.push({id:107, from: 1, to: 4, length: EDGE_LENGTH_MAIN});
+      edges.push({id:108, from: 2, to: 4, length: EDGE_LENGTH_MAIN});
+      edges.push({id:109, from: 2, to: 5, length: EDGE_LENGTH_MAIN});
+      edges.push({id:110, from: 3, to: 5, length: EDGE_LENGTH_MAIN});
+      edges.push({id:111, from: 1, to: 6, length: EDGE_LENGTH_SUB});
+ 
+      /*for (var i = 4; i <= 7; i++) {
+        nodes.push({id: i, label: 'Computer', image: DIR + 'Hardware-My-Computer-3-icon.png', shape: 'image'});
+        edges.push({from: 2, to: i, length: EDGE_LENGTH_SUB});
+      }*/
+
+
+      /*for (var i = 200; i <= 201; i++ ) {
+        nodes.push({id: i, label: 'Smartphone', image: DIR + 'Hardware-My-PDA-02-icon.png', shape: 'image'});
+        edges.push({from: 3, to: i, length: EDGE_LENGTH_SUB});
+      }*/
+		  
+      // create a network
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {};
+      network = new vis.Network(container, data, options);
+	  
+	  
+	  document.getElementById('mynetwork').onclick = function() {
+		  //alert(network.getSelectedNodes);
+	  }; 
+	  
+	  
+	  //network.click()
+	  /*selectEntity = [111];
+	  network.selectEdges(selectEntity);
+	  
+	  /*setTimeout(function(){
+		  deselect(function(){
+
+			  network.selectEdges(selectEntity);
+		  });
+	  }, 2000)
+	  
+	  
+	  function deselect(callback){
+	  	network.unselectAll();	
+		
+		callback();
+	  	
+	  }
+	  
+	  /*selectEntity = [1];
+	  network.selectNodes(selectEntity);
+	  
+	  /*setTimeout(function(){
+	  	network.unselectAll();	
+	  }, 2000)
+	  
+	  selectEntity = [2];
+	  network.selectNodes(selectEntity);
+	  
+	  setTimeout(function(){
+	  	network.unselectAll();	
+	  }, 2000)
+	  
+	  selectEntity = [3];
+	  network.selectNodes(selectEntity);
+  
+	  setTimeout(function(){
+	  	network.unselectAll();	
+	  }, 2000)
+	  
+	  selectEntity = [4];
+	  network.selectNodes(selectEntity);
+	  
+	  setTimeout(function(){
+	  	network.unselectAll();	
+	  }, 2000)
+	  
+	  selectEntity = [5];
+	  network.selectNodes(selectEntity);*/
+	
+	  
+    }
+  </script>
+  
+
+    
+
+
+
+<body onload="draw()">
+	<main>
+		
+		<input align="center" type="button" name="Submit" value="Submit" class="submit_button" onclick="stepOne()">
+		<input align="center" type="button" name="Submit" value="Submit" class="submit_button" onclick="stepTwo()">
+		<input align="center" type="button" name="Submit" value="Submit" class="submit_button" onclick="stepThree()">
+		
+		<div class="row">
+			<div class = "col s6">
+    <TABLE class="matrix" id="table">
+      <TBODY>
+        <TR>
+          <TH width="217" style="background: #2881e6;" scope="col" text-color:"white">Date & Time</TH>
+          <TH width="50"  style="background: #2881e6;" scope="col" text-color:"white">Transaction ID</TH>
+          <TH width="50"  style="background: #2881e6;" scope="col" text-color:"white">Device Name</TH>
+          <TH width="217" style="background: #2881e6;" scope="col" white"="">From</TH>
+          <TH width="158" style="background: #2881e6;" scope="col" white"="">To</TH>
+        </TR>
+      <!-- <TR id="transactiontable" ng-repeat="transaction in totalTransaction" class="matrix_row_light">
+        <TD id="ledgerTimestampValue"></TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-2"></LABEL>{{transaction.ledgerTimestamp}}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-3"></LABEL>{{transaction.ledgerBlockNo}} </TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-1"></LABEL>{{transaction.ledgerMiner}}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-1"></LABEL>{{macIDs(transaction.deviceName) }}</TD>
+        <TD><LABEL class="accessibility_hidden" 
+          for="RESULT_MatrixTextField-1-2"></LABEL>{{  }}</TD> -->
+
+        <TR id="transactionRow" class="matrix_row_light">
+          <TD id="ledgerTimestampValue"></TD>
+        </TR>
+
+      </TBODY>
+    </TABLE>
+</div>
+<div class="col s6">
+	<p>
+		Blockchain IoT Network
+	</p>
+	<div id="mynetwork"></div>
+</div>
+</main>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
+    <script src="lib/web3/dist/web3.js"></script>
+    <script src="init.js"></script>
+    <script src="gest.min.js"></script> 
+	<script src="./js/materialize.min.js"></script>
+
+
+    <script type="text/javascript">
+    //create message container
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'gest-message';
+    document.body.appendChild(messageContainer);
+
+    var styles = {
+    positioning: 'margin: 22% auto; min-width: 100px; max-width: 400px; width: 80%; padding: 15px;',
+    copy: 'font: normal 35px/1.1 \"Helvetica Neue\", Helvetica, Arial, sans-serif; color: #fff; font-size: 45px; text-align: center;',
+    general: 'display: block; background-color: #000; z-index: 100; border-radius: 10px;'
+    },
+    messageContainerStyle = styles.positioning + styles.copy + styles.general;
+
+    gest.options.subscribeWithCallback(function(gesture) {
+	    var message = '';
+	    if (gesture.direction) {
+	    message = gesture.direction;
+	    } else {
+	    message = gesture.error.message;
+	    } 
+	console.log(message);
+	    if(gesture.up){
+	console.log("MOVED UP");
+	    messageContainer.innerHTML = '<p style=\"margin:0\">' + message + '</p>';
+	    messageContainer.setAttribute('style', 'IOT device: Adding entry');
+		// Add the trigger function here
+		// initiateClaim();
+	    window.setTimeout(function() {
+	    messageContainer.setAttribute('style', 'display: none;');
+	    }, 3000);
+
+ 		}
+    });
+	
+	    
+
+    //gest.start();
+    </script>
+
+</body>
+</html>
